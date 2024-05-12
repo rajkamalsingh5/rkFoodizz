@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import cors from "cors";
-
+const port = process.env.PORT || 4000;
 const app = express();
 export default app;
 dotenv.config({
@@ -55,3 +55,4 @@ app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
 
 app.use(errorMiddleware);
+
