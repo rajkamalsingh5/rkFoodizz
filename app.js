@@ -6,8 +6,10 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import cors from "cors";
-const port = process.env.PORT || 4000;
 const app = express();
+app.use(cors());
+
+
 export default app;
 dotenv.config({
   path: "./config/config.env",
@@ -36,7 +38,7 @@ app.use(
 app.use(
   cors({
     credentials: true,
-    origin: process.env.FRONTEND_URL,
+    origin: '*',
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
