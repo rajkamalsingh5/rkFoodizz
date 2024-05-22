@@ -22,6 +22,7 @@ router.get("/myorders", isAuthenticated, getMyOrders);
 router.get("/order/:id", isAuthenticated, getOrderDetails);
 
 router.get("/admin/orders", isAuthenticated, authorizeAdmin, getAdminOrders);
+router.get("/admin/orders", isAuthenticated, authorizeAdmin, getAdminOrders);
 router.get("/admin/order/:id", isAuthenticated, authorizeAdmin, processOrder);
 
 
