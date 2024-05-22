@@ -1,5 +1,5 @@
 import { asyncError } from "../middlewares/errorMiddleware.js";
-import { Order } from "../models/order.js";
+import { Order } from "../models/Order.js";
 import { Payment } from "../models/Payment.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import { instance } from "../server.js";
@@ -16,8 +16,7 @@ export const placeOrder = asyncError(async (req, res, next) => {
     totalAmount,
   } = req.body;
 
-  const user = req.user._id;
-
+  const user =req.user._id;
   const orderOptions = {
     shippingInfo,
     orderItems,
@@ -60,9 +59,9 @@ export const placeOrderOnline = asyncError(async (req, res, next) => {
     totalAmount,
     user,
   };
-///
+
   const options = {
-    amount: Number(totalAmount) * 100,//string to number and * 100 as it has to be in smallest currency 
+    amount: Number(totalAmount) * 100,
     currency: "INR",
   };
   const order = await instance.orders.create(options);
@@ -116,7 +115,8 @@ export const paymentVerification = asyncError(async (req, res, next) => {
 export const getMyOrders = asyncError(async (req, res, next) => {
   const orders = await Order.find({
     user: req.user._id,
-  }).populate("user", "name");
+  })
+.populate("user", "name");
 
   res.status(200).json({
     success: true,

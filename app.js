@@ -6,10 +6,8 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import cors from "cors";
+
 const app = express();
-app.use(cors());
-
-
 export default app;
 dotenv.config({
   path: "./config/config.env",
@@ -45,11 +43,10 @@ app.use(
 
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
+app.use(passport.session());
 app.enable("trust proxy");
 
-app.use(passport.session());
 connectPassport();
-
 import userRoute from "./routes/user.js";
 import orderRoute from "./routes/order.js";
 
@@ -57,4 +54,3 @@ app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
 
 app.use(errorMiddleware);
-
