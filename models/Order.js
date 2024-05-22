@@ -30,16 +30,6 @@ const schema = new mongoose.Schema({
   },
 
   orderItems: {
-    samosa: {
-      price: {
-        type: Number,
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-    },
     cheeseBurger: {
       price: {
         type: Number,
@@ -50,7 +40,8 @@ const schema = new mongoose.Schema({
         required: true,
       },
     },
-    cola: {
+
+    vegCheeseBurger: {
       price: {
         type: Number,
         required: true,
@@ -60,28 +51,7 @@ const schema = new mongoose.Schema({
         required: true,
       },
     },
-    jalebi: {
-      price: {
-        type: Number,
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-    },
-  
-    roll: {
-      price: {
-        type: Number,
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-    },
-  
+
     burgerWithFries: {
       price: {
         type: Number,
